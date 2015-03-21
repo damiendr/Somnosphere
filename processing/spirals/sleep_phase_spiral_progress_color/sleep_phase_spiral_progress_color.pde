@@ -1,14 +1,16 @@
 float x, y;
 float angle = 0.0;
 float scalar = 0;
-float speed = 0.05;
+float speed = 0.15; //0.05;
 int[] color_awake = new int[] {
-  7, 180, 232 //color Clement
+  //7, 180, 232 //color Clement
   //242, 236, 194
+  5, 229, 222
 };
 int[] color_light = new int[] {
-  5, 229, 222
+  //5, 229, 222
   //233, 51, 37
+  7, 180, 232 //color Clement
 }; 
 float[] color_deep = new float[] {
   255, 163, 0
@@ -30,6 +32,11 @@ int idx = 0;
 int change_idx = 10; //100; //10;
 final int max_idx_before_change = 9; //99; //9;
 
+int sleep_phase;
+String date;
+String time;
+String phase_name;
+
 void setup() {
   size(800, 800);
   frameRate(250);
@@ -46,8 +53,10 @@ void setup() {
 void draw() {
   // get row in csv table
   if (max_idx_before_change < change_idx) {
-    row = csv_sleep_phase.getRow(idx);
-    change_idx = 0;
+
+      row = csv_sleep_phase.getRow(idx);
+      change_idx = 0;
+    
   }
   else {
     row = previous_row;
@@ -55,10 +64,25 @@ void draw() {
   }
 
   // get data of current row
-  int sleep_phase = row.getInt("sleep_phase");
-  String date = row.getString("date");
-  String time = row.getString("time");
-  String phase_name = "None";
+  //int sleep_phase = row.getInt("sleep_phase");
+  //String date = row.getString("date");
+  //String time = row.getString("time");
+  //String phase_name = "None";
+  try{
+    sleep_phase = row.getInt("sleep_phase");
+    date = row.getString("date");
+    time = row.getString("time");
+    //phase_name = "None";
+  } catch (ArrayIndexOutOfBoundsException e) {
+    println("end of file!");
+    int sleep_phase = 9999;
+    phase_name = "End";
+    int no_limit = 1;
+    while(no_limit > 0) {
+      no_limit += 1;
+    }
+  }
+  
   switch (sleep_phase) {
   case 0: 
     phase_name = "AwAkE";
@@ -93,11 +117,12 @@ void draw() {
     fill (color_rem[0], color_rem[1], color_rem[2]);
   x = width/2 + cos(angle) * scalar;
   y = height/2 + sin(angle) * scalar;
-  ellipse( x, y, 5, 5);
+  //ellipse( x, y, 5, 5);
+  ellipse( x, y, 5, 5); // set the size of cirlces
   
   // increment variables
   angle += speed;
-  scalar += 0.1;
+  scalar += 0.2; //0.2; //0.1;
   idx += 1;
   change_idx += 0;
   previous_row = row;
