@@ -35,20 +35,21 @@ AudioSample snare;
 
 void setup()
 {
-  size(512, 200, P3D);
+  size(2048, 200, P3D);
   minim = new Minim(this);
 
   // load BD.wav from the data folder
   //kick = minim.loadSample( "BD.mp3", // filename
   kick = minim.loadSample( "/home/xav/SAUV/cle_lyon32G_COPIE_RATEE/DJTAL_EMPIRE_201314.wav", // filename
-                            512      // buffer size
+                            //2048      // buffer size
+                            2048      // buffer size
                          );
                          
   // An AudioSample will spawn its own audio processing Thread, 
   // and since audio processing works by generating one buffer 
   // of samples at a time, we can specify how big we want that
   // buffer to be in the call to loadSample. 
-  // above, we requested a buffer size of 512 because 
+  // above, we requested a buffer size of 2048 because 
   // this will make the triggering of the samples sound more responsive.
   // on some systems, this might be too small and the audio 
   // will sound corrupted, in that case, you can just increase
@@ -58,8 +59,8 @@ void setup()
   if ( kick == null ) println("Didn't get kick!");
   
   // load SD.wav from the data folder
-  //snare = minim.loadSample("SD.wav", 512);
-  snare = minim.loadSample("/home/xav/Crasyprojects/hackthebrain2015/Somnosphere/onehour_2011-06-22_50Hz.wav", 512);
+  //snare = minim.loadSample("SD.wav", 2048);
+  snare = minim.loadSample("/home/xav/Crasyprojects/hackthebrain2015/Somnosphere/onehour_2011-06-22_50Hz.wav", 2048);
   if ( snare == null ) println("Didn't get snare!");
 }
 

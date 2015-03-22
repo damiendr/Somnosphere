@@ -14,20 +14,24 @@ float speed = 0.15; //0.15; //0.05; //parameters
 int[] color_awake = new int[] {
   //7, 180, 232 //color Clement
   //242, 236, 194
-  5, 229, 222
+  //5, 229, 222
+  255, 222, 2 // color Celine
 };
 int[] color_light = new int[] {
   //5, 229, 222
   //233, 51, 37
-  7, 180, 232 //color Clement
+  //7, 180, 232 //color Clement
+  52, 180, 49 //color Celine
 }; 
 float[] color_deep = new float[] {
-  255, 163, 0
+  //255, 163, 0 color Clement
   //7, 18, 229
+  21, 29, 195 // color Celine
 };
 float[] color_rem = new float[] {
-  202, 7, 232
+  //202, 7, 232//color clem
   //41, 182, 151
+  234, 6, 6 // color Celine
 };
 //0 Wake R: 242 G: 236 B: 194
 //1 Light Sleeping R: 233 G: 51 B: 37
@@ -60,7 +64,7 @@ void setup() {
   ///////////////////////////////////////
   // YOU CAN CHANGE THE WINDOW PROPERTIES
   size(800, 800);
-  frameRate(250);
+  frameRate(50);//frameRate(250);
   background(0);
   stroke(500);
   ///////////////////////////////////////
