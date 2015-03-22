@@ -4,7 +4,7 @@ float scalar = 0;
 /////////////////////////////////////
 /////////////////////////////////////
 /// YOU CAN CHANGE THE "SPEED" HERE
-float speed = 0.10;//0.15; //0.15; //0.05; //parameters
+float speed = 0.5;//0.15; //0.15; //0.05; //parameters
 /////////////////////////////////////
 /////////////////////////////////////
 
@@ -59,6 +59,35 @@ String date;
 String time;
 String phase_name;
 
+
+int[][] spiral_colors = new int[160][3];
+int spi_i = 0;
+void spiral(int a, int b, int c) {
+  spiral_colors[spi_i][0] = a;
+  spiral_colors[spi_i][1] = b;
+  spiral_colors[spi_i][2] = c;
+  
+  switch (sleep_phase) {
+  case 0: 
+    fill(color(52*100/360f, 99, 100));
+    break;
+  case 1: 
+    fill(color(119*100/360f, 73, 71));
+    break;
+  case 2: 
+    fill(color(237*100/360f, 89, 76));
+    break;
+  case 3: 
+    fill(color(0*100/360f, 97, 92));
+    break;
+  }
+  
+  ellipse( x, y, 7, 7); // set the size of cirlces
+  angle += speed;
+  scalar += 0.5;//0.2; //0.2; //0.1;
+  idx += 1;
+}
+
 void setup() {
   ///////////////////////////////////////
   ///////////////////////////////////////
@@ -76,9 +105,11 @@ void setup() {
 
   // Load the csv table
   csv_sleep_phase = loadTable("../../../data/stages_with_id.csv", "header");
-  //csv_sleep_phase = loadTable("../../../data/sleep_stages_levels.csv", "header");
-  
   //row = csv_sleep_phase.rows();
+  
+  row = csv_sleep_phase.getRow(idx);
+  sleep_phase = row.getInt("sleep_phase");
+  date = row.getString("date");
 }
 
 void draw() {
@@ -168,7 +199,7 @@ void draw() {
   ///////////////////////////////////////
 ///////////////////////////////////////
   // YOU CAN CHANGE ANGULAR CHANGE AT EACH TIME STEP
-  scalar += 0.25;//0.2; //0.2; //0.1;
+  scalar += 0.5;//0.2; //0.2; //0.1;
   ///////////////////////////////////////
 ///////////////////////////////////////
   idx += 1;
