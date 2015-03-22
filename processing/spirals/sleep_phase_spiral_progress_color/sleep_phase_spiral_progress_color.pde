@@ -65,7 +65,9 @@ void setup() {
   // YOU CAN CHANGE THE WINDOW PROPERTIES
   size(800, 800);
   frameRate(50);//frameRate(250);
-  background(0);
+  //background(0);
+  background(color_awake[0], color_awake[1], color_awake[2], 40);
+  //background(167, 165, 27, 40);
   stroke(500);
   ///////////////////////////////////////
 ///////////////////////////////////////
