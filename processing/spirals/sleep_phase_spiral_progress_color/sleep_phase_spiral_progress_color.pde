@@ -4,7 +4,7 @@ float scalar = 0;
 /////////////////////////////////////
 /////////////////////////////////////
 /// YOU CAN CHANGE THE "SPEED" HERE
-float speed = 0.15; //0.15; //0.05; //parameters
+float speed = 0.5;//0.15; //0.15; //0.05; //parameters
 /////////////////////////////////////
 /////////////////////////////////////
 
@@ -65,8 +65,8 @@ void setup() {
   // YOU CAN CHANGE THE WINDOW PROPERTIES
   size(800, 800);
   frameRate(50);//frameRate(250);
-  //background(0);
-  background(color_awake[0], color_awake[1], color_awake[2], 40);
+  background(0);
+  //background(color_awake[0], color_awake[1], color_awake[2], 40);
   //background(167, 165, 27, 40);
   stroke(500);
   ///////////////////////////////////////
@@ -157,7 +157,7 @@ void draw() {
 ///////////////////////////////////////
 // YOU CAN CHANG THE SHAPE AND SIZE OF THE DOT-CIRCLES
   //ellipse( x, y, 5, 5);
-  ellipse( x, y, 5, 5); // set the size of cirlces
+  ellipse( x, y, 7, 7); // set the size of cirlces
   ///////////////////////////////////////
 ///////////////////////////////////////
   
@@ -166,7 +166,7 @@ void draw() {
   ///////////////////////////////////////
 ///////////////////////////////////////
   // YOU CAN CHANGE ANGULAR CHANGE AT EACH TIME STEP
-  scalar += 0.2; //0.2; //0.1;
+  scalar += 1.0;//0.2; //0.2; //0.1;
   ///////////////////////////////////////
 ///////////////////////////////////////
   idx += 1;
